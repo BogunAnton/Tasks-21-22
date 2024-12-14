@@ -38,7 +38,7 @@ def input_two_mas(array1, array2):
     print("Второй массив цифр:", array2)
     return array1, array2  # Возвращаем массивы
 
-def sum_or_difference_arrays(array1, array2):
+def sum_or_difference_arrays_old(array1, array2):
     """
     Функция для вычисления суммы или разности двух массивов.
 
@@ -55,14 +55,60 @@ def sum_or_difference_arrays(array1, array2):
     sum_or_difference = input()
     if is_int(sum_or_difference):
         sum_or_difference = int(sum_or_difference)
+
+    start_time = time.perf_counter()  # Или time.perf_counter() для более точного измерения
     if sum_or_difference == 1:
         sum1 = sum(number for number in array1)
         sum2 = sum(number for number in array2)
-        return sum1 + sum2
+        result = sum1 + sum2
     if sum_or_difference == 2:
         sum1 = sum(number for number in array1)
         sum2 = sum(number for number in array2)
-        return sum1 - sum2
+        result = sum1 - sum2
+
+    end_time = time.perf_counter()  # Или time.perf_counter()
+
+    # Вывод времени выполнения
+    execution_time = end_time - start_time
+    print(f"Время выполнения функции: {execution_time:.6f} секунд")
+    return result
+
+def sum_or_difference_arrays_new(array1, array2):
+    """
+    Функция для вычисления суммы или разности двух массивов.
+
+    :param array1: Первый массив.
+    :type array1: list
+    :param array2: Второй массив.
+    :type array2: list
+    :return: Сумма или разность элементов двух массивов.
+    :rtype: int
+    """
+    print("Выберите находить сумму или разность массивов:\n"
+          "1. Сумму\n"
+          "2. Разность")
+    sum_or_difference = input()
+    if is_int(sum_or_difference):
+        sum_or_difference = int(sum_or_difference)
+
+    start_time = time.perf_counter()  # Или time.perf_counter() для более точного измерения
+    if sum_or_difference == 1:
+        sum1 = sum(array1)
+        sum2 = sum(array2)
+        result = sum1 + sum2
+    elif sum_or_difference == 2:
+        sum1 = sum(array1)
+        sum2 = sum(array2)
+        result = sum1 - sum2
+    else:
+        print("Неверный выбор")
+        return None
+    end_time = time.perf_counter()  # Или time.perf_counter()
+
+    # Вывод времени выполнения
+    execution_time = end_time - start_time
+    print(f"Время выполнения функции: {execution_time:.6f} секунд")
+    return result
 
 def input_two_numbers_mas(array1, array2):
     """
@@ -187,7 +233,7 @@ def rotation_matrix_new(matrix):
     transposed_matrix = transpose_list_comprehension(matrix)
     return [row[::-1] for row in transposed_matrix]
 
-if __name__ == "__main__":
+"""if __name__ == "__main__":
     matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     array2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -197,4 +243,11 @@ if __name__ == "__main__":
     # Вывод времени выполнения
     average_execution_time = execution_time / 10000
     print(f"Среднее время выполнения функции за 10 выполнений: {average_execution_time:.6f} секунд")
-    print(count_total_numbers_new(array1, array2))
+    print(count_total_numbers_new(array1, array2))"""
+
+"""if __name__ == "__main__":
+    array1 = [1, 2, 3, 4, 5]
+    array2 = [6, 7, 8, 9, 10]
+    result = sum_or_difference_arrays_new(array1, array2)
+    if result is not None:
+        print("Результат:", result)"""
